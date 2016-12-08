@@ -9,7 +9,7 @@ public class GameFactory implements IGameFactory {
 	 */
 	@Override
 	public String[] getGameNames() {
-		return new String[] { "Gold"};
+		return new String[] { "Gold", "Reversi", "Snake"};
 	}
 
 	/**
@@ -24,6 +24,10 @@ public class GameFactory implements IGameFactory {
 	public GameModel createGame(final String gameName) {
 		if (gameName.equals("Gold")) {
 			return new GoldModel();
+		} else if (gameName.equals("Reversi")) {
+			return new ReversiModel();
+		}else if(gameName.equals("Snake")) {
+			return new SnakeModel();
 		}
 
 		throw new IllegalArgumentException("No such game: " + gameName);
