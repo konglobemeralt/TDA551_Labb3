@@ -1,9 +1,11 @@
+/*
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * Sample game for illustration. Intentionally stupid; more interesting
  * games to be provided by students.
@@ -13,8 +15,9 @@ import java.util.List;
  * coin is randomly moved to a new position every n moves, where n is the number
  * of remaining coins. The game is won when all coins are collected and lost when
  * collector leaves game board.
- */
-public class GoldModel extends GameModel {
+ *//*
+
+public class GoldModel extends IGameModel {
 	public enum Directions {
 		EAST(1, 0),
 		WEST(-1, 0),
@@ -41,50 +44,70 @@ public class GoldModel extends GameModel {
 
 	private static final int COIN_START_AMOUNT = 20;
 
-	/*
+	*/
+/*
 	 * The following IGameTile objects are used only
 	 * to describe how to paint the specified item.
 	 * 
 	 * This means that they should only be used in
 	 * conjunction with the get/setGameboardState()
 	 * methods.
-	 */
+	 *//*
 
-	/** Graphical representation of a coin. */
+
+	*/
+/** Graphical representation of a coin. *//*
+
 	private static final IGameTile COIN_TILE = new RoundTileI(new Color(255, 215,
 			0),
 			new Color(255, 255, 0), 2.0);
 
-	/** Graphical representation of the collector */
+	*/
+/** Graphical representation of the collector *//*
+
 	private static final IGameTile COLLECTOR_TILE = new RoundTileI(Color.BLACK,
 			Color.RED, 2.0);
 
-	/** Graphical representation of a blank tile. */
-	private static final IGameTile BLANK_TILE = new IGameTile();
+	*/
+/** Graphical representation of a blank tile. *//*
 
-	/** A list containing the positions of all coins. */
+	private static final IGameTile BLANK_TILE = new BlankTile();
+
+	*/
+/** A list containing the positions of all coins. *//*
+
 	private final List<Position> coins = new ArrayList<Position>();
-	/*
+	*/
+/*
 	 * The declaration and object creation above uses the new language feature
 	 * 'generic types'. It can be declared in the old way like this:
 	 * private java.util.List coins = new ArrayList();
 	 * This will however result in a warning at compilation
 	 * "Position" in this case is the type of the objects that are going
 	 * to be used in the List
-	 */
+	 *//*
 
-	/** The position of the collector. */
+
+	*/
+/** The position of the collector. *//*
+
 	private Position collectorPos;
 
-	/** The direction of the collector. */
+	*/
+/** The direction of the collector. *//*
+
 	private Directions direction = Directions.NORTH;
 
-	/** The number of coins found. */
+	*/
+/** The number of coins found. *//*
+
 	private int score;
 
-	/**
+	*/
+/**
 	 * Create a new model for the gold game.
-	 */
+	 *//*
+
 	public GoldModel() {
 		Dimension size = getGameboardSize();
 
@@ -105,9 +128,11 @@ public class GoldModel extends GameModel {
 		}
 	}
 
-	/**
+	*/
+/**
 	 * Insert another coin into the gameboard.
-	 */
+	 *//*
+
 	private void addCoin() {
 		Position newCoinPos;
 		Dimension size = getGameboardSize();
@@ -122,21 +147,25 @@ public class GoldModel extends GameModel {
 		this.coins.add(newCoinPos);
 	}
 
-	/**
+	*/
+/**
 	 * Return whether the specified position is empty.
 	 * 
 	 * @param pos
 	 *            The position to test.
 	 * @return true if position is empty.
-	 */
+	 *//*
+
 	private boolean isPositionEmpty(final Position pos) {
 		return (getGameboardState(pos) == BLANK_TILE);
 	}
 
-	/**
+	*/
+/**
 	 * Update the direction of the collector
 	 * according to the user's keypress.
-	 */
+	 *//*
+
 	private void updateDirection(final int key) {
 		switch (key) {
 			case KeyEvent.VK_LEFT:
@@ -157,22 +186,26 @@ public class GoldModel extends GameModel {
 		}
 	}
 
-	/**
+	*/
+/**
 	 * Get next position of the collector.
-	 */
+	 *//*
+
 	private Position getNextCollectorPos() {
 		return new Position(
 				this.collectorPos.getX() + this.direction.getXDelta(),
 				this.collectorPos.getY() + this.direction.getYDelta());
 	}
 
-	/**
+	*/
+/**
 	 * This method is called repeatedly so that the
 	 * game can update its state.
 	 * 
 	 * @param lastKey
 	 *            The most recent keystroke.
-	 */
+	 *//*
+
 	@Override
 	public void gameUpdate(final int lastKey) throws GameOverException {
 		updateDirection(lastKey);
@@ -208,14 +241,17 @@ public class GoldModel extends GameModel {
 
 	}
 
-	/**
+	*/
+/**
 	 * 
 	 * @param pos The position to test.
 	 * @return <code>false</code> if the position is outside the playing field, <code>true</code> otherwise.
-	 */
+	 *//*
+
 	private boolean isOutOfBounds(Position pos) {
 		return pos.getX() < 0 || pos.getX() >= getGameboardSize().width
 				|| pos.getY() < 0 || pos.getY() >= getGameboardSize().height;
 	}
 
 }
+*/

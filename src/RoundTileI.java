@@ -13,7 +13,7 @@ import java.awt.Stroke;
  * it is told what size and position that
  * should be used to paint it.
  */
-public class RoundTileI extends IGameTile {
+public class RoundTileI implements IGameTile {
 
 	/** The color of the circle */
 	private final Color strokeColor;

@@ -1,5 +1,5 @@
 /**
- * Thrown by GameModel.doCommand at game termination. The exception contains
+ * Thrown by IGameModel.doCommand at game termination. The exception contains
  * information about how many points the player got.
  */
 public class GameOverException extends Exception {

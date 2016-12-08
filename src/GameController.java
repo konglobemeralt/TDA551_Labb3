@@ -15,7 +15,7 @@ public class GameController implements Runnable {
 	private final GameView view;
 
 	/** The game model describes the running game. */
-	private GameModel gameModel;
+	private IGameModel gameModel;
 
 	/** The timeout interval between each update. (millis) */
 	private final int updateInterval;
@@ -91,7 +91,7 @@ public class GameController implements Runnable {
 	 * @param gameModel
 	 *            Game to start
 	 */
-	public void startGame(final GameModel gameModel) {
+	public void startGame(final IGameModel gameModel) {
 		if (this.isRunning) {
 			throw new IllegalStateException("Game is already running");
 		}

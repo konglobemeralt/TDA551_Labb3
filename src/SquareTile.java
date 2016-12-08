@@ -5,21 +5,21 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 
-public class SquareTileI extends IGameTile {
+public class SquareTile implements IGameTile {
 	private final Color fillColor;
 	private final Color strokeColor;
 	private final Stroke stroke;
 
-	public SquareTileI(final Color color) {
+	public SquareTile(final Color color) {
 		this(color, color);
 	}
 
-	public SquareTileI(final Color strokeColor, final Color fillColor) {
+	public SquareTile(final Color strokeColor, final Color fillColor) {
 		this(strokeColor, fillColor, 1.0);
 	}
 
-	public SquareTileI(final Color strokeColor, final Color fillColor,
-                       final double thickness) {
+	public SquareTile(final Color strokeColor, final Color fillColor,
+                      final double thickness) {
 		this.strokeColor = strokeColor;
 		this.fillColor = fillColor;
 		if (thickness > 0) {
