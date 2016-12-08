@@ -58,20 +58,20 @@ public class ReversiModel extends GameModel {
 	}
 
 	/** Graphical representation of a coin. */
-	private static final GameTile blackTile = new RoundTile(Color.BLACK,
+	private static final IGameTile blackTile = new RoundTileI(Color.BLACK,
 			Color.BLACK, 1.0, 0.8);
-	private static final GameTile whiteTile = new RoundTile(Color.BLACK,
+	private static final IGameTile whiteTile = new RoundTileI(Color.BLACK,
 			Color.WHITE, 1.0, 0.8);
-	private static final GameTile blankTile = new SquareTile(Color.BLACK,
+	private static final IGameTile blankTile = new SquareTileI(Color.BLACK,
 			new Color(0, 200, 0), 2.0);
-	private static final GameTile whiteGridTile = new CompositeTile(blankTile,
+	private static final IGameTile whiteGridTile = new CompositeTileI(blankTile,
 			whiteTile);
-	private static final GameTile blackGridTile = new CompositeTile(blankTile,
+	private static final IGameTile blackGridTile = new CompositeTileI(blankTile,
 			blackTile);
-	private static final GameTile cursorRedTile = new CrossTile(Color.RED, 2.0);
-	private static final GameTile cursorBlackTile = new RoundTile(Color.RED,
+	private static final IGameTile cursorRedTile = new CrossTileI(Color.RED, 2.0);
+	private static final IGameTile cursorBlackTile = new RoundTileI(Color.RED,
 			new Color(0, 50, 0), 2.0, 0.8);
-	private static final GameTile cursorWhiteTile = new RoundTile(Color.RED,
+	private static final IGameTile cursorWhiteTile = new RoundTileI(Color.RED,
 				new Color(210, 255, 210), 2.0, 0.8);
 
 	private Turn turn;
@@ -160,7 +160,7 @@ public class ReversiModel extends GameModel {
 
 	private void tryPlay() {
 		if (isPositionEmpty(this.cursorPos)) {
-			GameTile t;
+			IGameTile t;
 			if (this.turn == Turn.BLACK) {
 				t = blackGridTile;
 			} else {
@@ -338,9 +338,9 @@ public class ReversiModel extends GameModel {
 	}
 
 	private void removeCursor(final Position oldCursorPos) {
-		GameTile t = getGameboardState(this.cursorPos);
-		if (t instanceof CompositeTile) {
-			CompositeTile c = (CompositeTile) t;
+		IGameTile t = getGameboardState(this.cursorPos);
+		if (t instanceof CompositeTileI) {
+			CompositeTileI c = (CompositeTileI) t;
 			// Remove the top layer, if it is the cursor.
 			if (c.getTop() == cursorRedTile ||
 					c.getTop() == cursorWhiteTile ||
@@ -351,16 +351,16 @@ public class ReversiModel extends GameModel {
 	}
 
 	private void updateCursor() {
-		GameTile t = getGameboardState(this.cursorPos);
-		GameTile cursoredTile;
+		IGameTile t = getGameboardState(this.cursorPos);
+		IGameTile cursoredTile;
 		if (canTurn(this.turn, this.cursorPos)) {
 			if (this.turn == Turn.BLACK) {
-				cursoredTile = new CompositeTile(t, cursorBlackTile);
+				cursoredTile = new CompositeTileI(t, cursorBlackTile);
 			} else {
-				cursoredTile = new CompositeTile(t, cursorWhiteTile);
+				cursoredTile = new CompositeTileI(t, cursorWhiteTile);
 			}
 		} else {
-			cursoredTile = new CompositeTile(t, cursorRedTile);
+			cursoredTile = new CompositeTileI(t, cursorRedTile);
 		}
 		setGameboardState(this.cursorPos, cursoredTile);
 	}

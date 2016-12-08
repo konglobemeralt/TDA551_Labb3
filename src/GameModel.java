@@ -9,7 +9,7 @@ import java.awt.Dimension;
 public interface GameModel {
 
 	/** A Matrix containing the state of the gameboard. */
-	/*private final GameTile[][] gameboardState;
+	/*private final IGameTile[][] gameboardState;
 
 	*//** The size of the state matrix. *//*
 	private final Dimension gameboardSize = Constants.getGameSize();
@@ -20,7 +20,7 @@ public interface GameModel {
 	 *//*
 	public GameModel() {
 		this.gameboardState =
-				new GameTile[this.gameboardSize.width][this.gameboardSize.height];
+				new IGameTile[this.gameboardSize.width][this.gameboardSize.height];
 	}*/
 
 	/**
@@ -31,7 +31,7 @@ public interface GameModel {
 	 * @param tile
 	 *            The type of tile to paint in specified position
 	 */
-	public void setGameboardState(final Position pos, final GameTile tile);
+	public void setGameboardState(final Position pos, final IGameTile tile);
 
 	/**
 	 * Set the tile on a specified position in the gameboard.
@@ -44,25 +44,25 @@ public interface GameModel {
 	 *            The type of tile to paint in specified position
 	 */
 	public void setGameboardState(final int x, final int y,
-			final GameTile tile);
+			final IGameTile tile);
 
 	/**
-	 * Returns the GameTile in logical position (x,y) of the gameboard.
+	 * Returns the IGameTile in logical position (x,y) of the gameboard.
 	 * 
 	 * @param pos
 	 *            The position in the gameboard matrix.
 	 */
-	public GameTile getGameboardState(final Position pos);
+	public IGameTile getGameboardState(final Position pos);
 
 	/**
-	 * Returns the GameTile in logical position (x,y) of the gameboard.
+	 * Returns the IGameTile in logical position (x,y) of the gameboard.
 	 * 
 	 * @param x
 	 *            Coordinate in the gameboard matrix.
 	 * @param y
 	 *            Coordinate in the gameboard matrix.
 	 */
-	public GameTile getGameboardState(final int x, final int y);
+	public IGameTile getGameboardState(final int x, final int y);
 
 	/**
 	 * Returns the size of the gameboard.

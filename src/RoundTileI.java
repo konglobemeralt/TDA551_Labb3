@@ -13,7 +13,7 @@ import java.awt.Stroke;
  * it is told what size and position that
  * should be used to paint it.
  */
-public class RoundTile extends GameTile {
+public class RoundTileI extends IGameTile {
 
 	/** The color of the circle */
 	private final Color strokeColor;
@@ -27,7 +27,7 @@ public class RoundTile extends GameTile {
 	 * @param fillColor
 	 *            the color of the interior of the circle.
 	 */
-	public RoundTile(final Color fillColor) {
+	public RoundTileI(final Color fillColor) {
 		this(fillColor, fillColor);
 	}
 
@@ -39,7 +39,7 @@ public class RoundTile extends GameTile {
 	 * @param fillColor
 	 *            the color of the interior of the circle.
 	 */
-	public RoundTile(final Color strokeColor, final Color fillColor) {
+	public RoundTileI(final Color strokeColor, final Color fillColor) {
 		this(strokeColor, fillColor, 1.0);
 	}
 
@@ -53,8 +53,8 @@ public class RoundTile extends GameTile {
 	 * @param thickness
 	 *            the thickness of the stroke.
 	 */
-	public RoundTile(final Color strokeColor, final Color fillColor,
-			final double thickness) {
+	public RoundTileI(final Color strokeColor, final Color fillColor,
+                      final double thickness) {
 		this(strokeColor, fillColor, thickness, 1.0);
 	}
 
@@ -70,8 +70,8 @@ public class RoundTile extends GameTile {
 	 * @param scale
 	 *            size of the circle relative to the tile size.
 	 */
-	public RoundTile(final Color strokeColor, final Color fillColor,
-			final double thickness, final double scale) {
+	public RoundTileI(final Color strokeColor, final Color fillColor,
+                      final double thickness, final double scale) {
 		this.strokeColor = strokeColor;
 		this.fillColor = fillColor;
 		this.stroke = new BasicStroke((float) thickness);

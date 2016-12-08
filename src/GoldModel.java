@@ -42,7 +42,7 @@ public class GoldModel extends GameModel {
 	private static final int COIN_START_AMOUNT = 20;
 
 	/*
-	 * The following GameTile objects are used only
+	 * The following IGameTile objects are used only
 	 * to describe how to paint the specified item.
 	 * 
 	 * This means that they should only be used in
@@ -51,16 +51,16 @@ public class GoldModel extends GameModel {
 	 */
 
 	/** Graphical representation of a coin. */
-	private static final GameTile COIN_TILE = new RoundTile(new Color(255, 215,
+	private static final IGameTile COIN_TILE = new RoundTileI(new Color(255, 215,
 			0),
 			new Color(255, 255, 0), 2.0);
 
 	/** Graphical representation of the collector */
-	private static final GameTile COLLECTOR_TILE = new RoundTile(Color.BLACK,
+	private static final IGameTile COLLECTOR_TILE = new RoundTileI(Color.BLACK,
 			Color.RED, 2.0);
 
 	/** Graphical representation of a blank tile. */
-	private static final GameTile BLANK_TILE = new GameTile();
+	private static final IGameTile BLANK_TILE = new IGameTile();
 
 	/** A list containing the positions of all coins. */
 	private final List<Position> coins = new ArrayList<Position>();

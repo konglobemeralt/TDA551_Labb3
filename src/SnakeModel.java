@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class SnakeModel extends GameModel{
@@ -8,19 +7,19 @@ public class SnakeModel extends GameModel{
     private int score;
 
     /** Graphical representation of a coin. */
-    private static final GameTile BODY_TILE = new RoundTile(new Color(139, 215,
+    private static final IGameTile BODY_TILE = new RoundTileI(new Color(139, 215,
             61), new Color(139, 215, 61), 2.0);
 
     /** Graphical representation of a blank tile. */
-    private static final GameTile HEAD_TILE = new RoundTile(new Color(0, 126, 17),
+    private static final IGameTile HEAD_TILE = new RoundTileI(new Color(0, 126, 17),
             new Color(0, 126, 17), 2.0);
 
     /** Graphical representation of the collector */
-    private static final GameTile APPLE_TILE = new RoundTile(new Color(215, 3,
+    private static final IGameTile APPLE_TILE = new RoundTileI(new Color(215, 3,
             0), new Color(215, 3, 0), 2.0);
 
     /** Graphical representation of a blank tile. */
-    private static final GameTile BLANK_TILE = new GameTile();
+    private static final IGameTile BLANK_TILE = new IGameTile();
 
     /** The direction of the collector. */
     private GoldModel.Directions direction = GoldModel.Directions.NORTH;
