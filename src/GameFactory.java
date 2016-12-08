@@ -23,7 +23,7 @@ public class GameFactory implements IGameFactory {
 	@Override
 	public IGameModel createGame(final String gameName) {
 		if (gameName.equals("Gold")) {
-			//return new GoldModel();
+			return new GoldModel();
 		} else if (gameName.equals("Reversi")) {
 			return new ReversiModel();
 		}
