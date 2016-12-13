@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -53,7 +54,11 @@ public class ReversiModel implements IGameModel {
         this.gameModelListener.removePropertyChangeListener(observer);
 	}
 
-	public IGameTile getGameboardState(final Position pos) {
+	public int getUpdateSpeed(){
+	    return -1;
+    }
+
+    public IGameTile getGameboardState(final Position pos) {
 
 		return PieceColor.toTile(this.board[pos.getX()][pos.getY()]);
 	}
@@ -377,38 +382,11 @@ public class ReversiModel implements IGameModel {
 							Math.min(nextCursorPos.getY(), boardSize.height - 1));
 			nextCursorPos = new Position(nextX, nextY);
 			this.cursorPos = nextCursorPos;
-			// updateCursor();
+            this.gameModelListener.firePropertyChange("GameUpdate", true, false);
+            // updateCursor();
 		} else {
 			throw new GameOverException(this.blackScore - this.whiteScore);
 		}
 	}
-
-	/*private void removeCursor(final Position oldCursorPos) {
-		IGameTile t = getGameboardState(this.cursorPos);
-		if (t instanceof CompositeTile) {
-			CompositeTile c = (CompositeTile) t;
-			// Remove the top layer, if it is the cursor.
-			if (c.getTop() == cursorRedTile ||
-					c.getTop() == cursorWhiteTile ||
-					c.getTop() == cursorBlackTile) {
-				//setGameboardState(oldCursorPos, c.getBottom());
-			}
-		}
-	}*/
-
-	/*private void updateCursor() {
-		IGameTile t = getGameboardState(this.cursorPos);
-		IGameTile cursoredTile;
-		if (canTurn(this.turn, this.cursorPos)) {
-			if (this.turn == Turn.BLACK) {
-				cursoredTile = new CompositeTile(t, cursorBlackTile);
-			} else {
-				cursoredTile = new CompositeTile(t, cursorWhiteTile);
-			}
-		} else {
-			cursoredTile = new CompositeTile(t, cursorRedTile);
-		}
-		// setGameboardState(this.cursorPos, cursoredTile);
-	}*/
 
 }

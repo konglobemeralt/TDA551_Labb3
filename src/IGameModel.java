@@ -66,4 +66,7 @@ public interface IGameModel extends  IObservable{
 	 *            The most recent keystroke.
 	 */
 	public void gameUpdate(int lastKey) throws GameOverException;
+
+    public int getUpdateSpeed();
+
 }

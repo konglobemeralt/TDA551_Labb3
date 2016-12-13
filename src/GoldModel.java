@@ -70,7 +70,11 @@ public class GoldModel implements IOldGameModel {
 		this.gameModelListener.addPropertyChangeListener(observer);
 	}
 
-	public void removeObserver(PropertyChangeListener observer){
+	public int getUpdateSpeed(){
+	    return 100;
+    }
+
+    public void removeObserver(PropertyChangeListener observer){
 		this.gameModelListener.removePropertyChangeListener(observer);
 	}
 
@@ -242,7 +246,10 @@ public class GoldModel implements IOldGameModel {
 		// Add a new coin (simulating moving one coin)
 		addCoin();
 
-	}
+        this.gameModelListener.firePropertyChange("GameUpdate", true, false);
+
+
+    }
 
 	/**
 	 * 

@@ -3,6 +3,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JComponent;
 
@@ -10,7 +12,7 @@ import javax.swing.JComponent;
  * A view Component suitable for inclusion in an AWT Frame. Paints itself by
  * consulting its model.
  */
-public class GameView extends JComponent {
+public class GameView extends JComponent implements PropertyChangeListener{
 
 	/** Size of game model */
 	private final Dimension modelSize;
@@ -54,6 +56,7 @@ public class GameView extends JComponent {
 	 */
 	public void setModel(final IGameModel model) {
 		this.model = model;
+		this.model.addObserver(this);
 		repaint();
 	}
 
@@ -106,5 +109,9 @@ public class GameView extends JComponent {
 			final char[] message = "No model chosen.".toCharArray(); 
 			g.drawChars(message, 0, message.length, 50, 50);
 		}
+	}
+
+	public void propertyChange(PropertyChangeEvent e){
+		repaint();
 	}
 }
