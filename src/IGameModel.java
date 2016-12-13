@@ -6,25 +6,9 @@ import java.awt.Dimension;
  * Constructors of subclasses should initiate matrix elements and additional,
  * game-dependent fields.
  */
-public interface IGameModel {
+public interface IGameModel extends  IObservable{
 
-	/** A Matrix containing the state of the gameboard. */
-	/*private final IGameTile[][] gameboardState;
 
-	*//** The size of the state matrix. *//*
-	private final Dimension gameboardSize = Constants.getGameSize();
-
-	*//**
-	 * Create a new game model. As IGameModel is an abstract class, this is only
-	 * intended for subclasses.
-	 *//*
-	public IGameModel() {
-		this.gameboardState =
-				new IGameTile[this.gameboardSize.width][this.gameboardSize.height];
-	}*/
-
-/*
-	*/
 /**
 	 * Set the tile on a specified position in the gameboard.
 	 * 

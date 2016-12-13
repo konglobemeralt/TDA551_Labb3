@@ -1,6 +1,10 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A somewhat defective implementation of the game Reversi. The purpose
@@ -10,6 +14,9 @@ import java.awt.event.KeyEvent;
  * 
  */
 public class ReversiModel implements IGameModel {
+
+	private PropertyChangeSupport gameModelListener = new PropertyChangeSupport(this);
+
 	public enum Direction {
 			EAST(1, 0),
 			SOUTHEAST(1, 1),
@@ -38,15 +45,13 @@ public class ReversiModel implements IGameModel {
 		}
 	}
 
-
-	/*public void setGameboardState(final Position pos, final IGameTile tile) {
-
+	public void addObserver(PropertyChangeListener observer){
+        this.gameModelListener.addPropertyChangeListener(observer);
 	}
 
-	public void setGameboardState(final int x, final int y,
-								  final IGameTile tile) {
-
-	}*/
+	public void removeObserver(PropertyChangeListener observer){
+        this.gameModelListener.removePropertyChangeListener(observer);
+	}
 
 	public IGameTile getGameboardState(final Position pos) {
 

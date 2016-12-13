@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,9 @@ import java.util.List;
  * collector leaves game board.
  */
 public class GoldModel implements IOldGameModel {
+
+	private PropertyChangeSupport gameModelListener = new PropertyChangeSupport(this);
+
 	public enum Directions {
 		EAST(1, 0),
 		WEST(-1, 0),
@@ -59,6 +64,14 @@ public class GoldModel implements IOldGameModel {
 
 	public Dimension getGameboardSize() {
 		return Constants.getGameSize();
+	}
+
+	public void addObserver(PropertyChangeListener observer){
+		this.gameModelListener.addPropertyChangeListener(observer);
+	}
+
+	public void removeObserver(PropertyChangeListener observer){
+		this.gameModelListener.removePropertyChangeListener(observer);
 	}
 
 
