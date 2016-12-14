@@ -25,7 +25,11 @@ public class GameFactory implements IGameFactory {
 		if (gameName.equals("Gold")) {
 			return new GoldModel();
 		} else if (gameName.equals("Reversi")) {
-			return new ReversiModel();
+			ReversiModel rModel = new ReversiModel();
+			ReversiScoreView rScore = new ReversiScoreView();
+			rModel.addObserver(rScore);
+            rScore.setModel(rModel);
+			return rModel;
 		}
 
 		throw new IllegalArgumentException("No such game: " + gameName);

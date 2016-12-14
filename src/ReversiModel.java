@@ -225,8 +225,10 @@ public class ReversiModel implements IGameModel {
 						(this.turn == Turn.BLACK
 								? PieceColor.BLACK
 								: PieceColor.WHITE);
-				System.out.println("Bong! White: " + this.whiteScore
-						+ "\tBlack: " + this.blackScore);
+				// System.out.println("Bong! White: " + this.whiteScore
+						// + "\tBlack: " + this.blackScore);
+				this.gameModelListener.firePropertyChange("scoreChange", true, false);
+
 				this.turn = Turn.nextTurn(this.turn);
 			}
 			if (!canTurn(this.turn)) {
@@ -239,6 +241,10 @@ public class ReversiModel implements IGameModel {
 			}
 		}
 
+	}
+
+	public String getNextTurn(){
+		return (this.turn == Turn.BLACK ? PieceColor.WHITE : PieceColor.BLACK).toString();
 	}
 
 	private void turnOver(final Turn turn, final Position cursorPos) {
