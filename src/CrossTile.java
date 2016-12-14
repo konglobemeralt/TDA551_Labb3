@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 
-public class CrossTileI implements IGameTile {
+public class CrossTile implements IGameTile {
 	/** The color of the cross */
 	private final Color color;
 	private final Stroke stroke;
@@ -16,7 +16,7 @@ public class CrossTileI implements IGameTile {
 	 * @param color
 	 *            the color of the cross.
 	 */
-	public CrossTileI(final Color color, final double thickness) {
+	public CrossTile(final Color color, final double thickness) {
 		this.color = color;
 		this.stroke =
 				new BasicStroke((float) thickness, BasicStroke.CAP_SQUARE,

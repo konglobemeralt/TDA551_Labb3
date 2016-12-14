@@ -1,11 +1,8 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A somewhat defective implementation of the game Reversi. The purpose
@@ -127,7 +124,7 @@ public class ReversiModel implements IGameModel {
 			whiteTile);
 	private static final IGameTile blackGridTile = new CompositeTile(blankTile,
 			blackTile);
-	private static final IGameTile cursorRedTile = new CrossTileI(Color.RED, 2.0);
+	private static final IGameTile cursorRedTile = new CrossTile(Color.RED, 2.0);
 	private static final IGameTile cursorBlackTile = new RoundTileI(Color.RED,
 			new Color(0, 50, 0), 2.0, 0.8);
 	private static final IGameTile cursorWhiteTile = new RoundTileI(Color.RED,
@@ -391,7 +388,7 @@ public class ReversiModel implements IGameModel {
             this.gameModelListener.firePropertyChange("GameUpdate", true, false);
             // updateCursor();
 		} else {
-			throw new GameOverException(this.blackScore - this.whiteScore);
+			throw new GameOverException(Math.abs(this.blackScore - this.whiteScore));
 		}
 	}
 
